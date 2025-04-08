@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Voice Assistant</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding-top: 50px; }
+        #response-box { margin-top: 30px; font-size: 1.2rem; }
+        button { padding: 15px 30px; font-size: 1.2rem; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>🎙️ Voice Assistant</h1>
+    <button onclick="listenCommand()">Start Listening</button>
+    
+    <div id="response-box">
+        <p><strong>You:</strong> <span id="userText"></span></p>
+        <p><strong id="assistantName">Assistant:</strong> <span id="assistantText"></span></p>
+    </div>
+
+    <script>
+        function listenCommand() {
+            $('#userText').text("Listening...");
+            $('#assistantText').text("");
+            $.get("/listen", function(data) {
+                $('#userText').text(data.user);
+                $('#assistantText').text(data.assistant);
+                $('#assistantName').text(data.name + ":");
+            });
+        }
+    </script>
+</body>
+</html>
