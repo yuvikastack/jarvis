@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JARVIS Interface</title>
+    <meta name="description" content="A Jarvis-inspired AI assistant interface">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/globals.css') }}">
+    {% block head %}{% endblock %}
+</head>
+<body class="dark-theme"> {% block content %}{% endblock %}
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

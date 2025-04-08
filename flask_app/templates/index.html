@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<main class="flex min-h-screen flex-col items-center justify-center bg-black p-4">
+    <div class="w-full max-w-4xl mx-auto flex flex-col items-center space-y-8">
+        <div class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-blue-500 mb-2">JARVIS</h1>
+            <p class="text-gray-400">Just A Rather Very Intelligent System</p> </div>
+
+        <div class="relative w-full aspect-video bg-gray-900 rounded-xl overflow-hidden flex items-center justify-center"> <canvas id="waveCanvas" width="800" height="200" class="absolute inset-0 w-full h-full opacity-70"></canvas> <div class="z-10 text-center p-8" id="responseArea">
+                <p class="text-gray-500 text-lg">Click the button below to activate Jarvis</p>
+                <div id="loadingSpinner" style="display: none;"> <div class="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+                 </div>
+                 <p id="responseText" class="text-blue-400 text-xl"></p> </div>
+        </div>
+
+        <div class="flex items-center justify-center space-x-6">
+            <button id="activateButton" class="w-24 h-24 rounded-full bg-gradient-to-r from-blue-600 to-blue-400 flex items-center justify-center shadow-lg hover:shadow-blue-500/50 transition-all duration-300 hover:scale-105"> <div class="w-20 h-20 rounded-full bg-blue-900 flex items-center justify-center">
+                <div class="w-16 h-16 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 flex items-center justify-center pulse-animation"> <span class="text-white font-bold">JARVIS</span>
+                </div>
+              </div>
+            </button>
+
+            <button id="stopButton" style="display: none;" class="rounded-full w-16 h-16 flex items-center justify-center bg-red-600 text-white"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect></svg> </button>
+
+            <button id="muteButton" class="rounded-full w-12 h-12 bg-gray-800 border-gray-700 flex items-center justify-center text-white"> <svg id="micIcon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="22"></line></svg> <svg id="micOffIcon" style="display: none;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 lucide lucide-mic-off"><line x1="1" x2="23" y1="1" y2="23"></line><path d="M9 9v3a3 3 0 0 0 5.12 2.12M15 9.34V4a3 3 0 0 0-5.94-.6"></path><path d="M17 16.95A7 7 0 0 1 5 12v-2m14 0v2a7 7 0 0 1-.11 1.23"></path><line x1="12" x2="12" y1="19" y2="22"></line></svg> </button>
+        </div>
+    </div>
+    <audio id="jarvisSound" src="{{ url_for('static', filename='audio/jarvis-sound.mp3') }}" loop></audio> </main>
+{% endblock %}
